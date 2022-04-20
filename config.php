@@ -16,3 +16,9 @@ function totalRows() {
    $posts = $conn->query($sql)->fetch();
    return $posts['total'];
 }
+
+function text($value)//for Testing Purpose 
+{
+    echo "<pre>". print_r($value, 1). "</pre>";
+    die();
+}
