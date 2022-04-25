@@ -20,15 +20,17 @@ function paginatePosts($currentPage = 1, $recordsPerPage = 4)
 
     $posts = $stmt->fetchAll();
 
-    return [
+    return 
+    [
         'posts' => $posts,
         'prevPage' => $currentPage > 1 ? $currentPage - 1 : false,
         'nextPage' => $currentPage + 1 <= $numberOfPages ? $currentPage + 1 : false,
+        'numberOfPages' => $numberOfPages
     ];
 }
 
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 $pageData = paginatePosts($currentPage, 3);
 //$pageData = paginatePosts($currentPage); uses the default numberOfRecords defined on line 5 
-
+$pageNumbers = getPaginationNumbers($currentPage, $pageData['numberOfPages']);
 

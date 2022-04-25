@@ -28,6 +28,7 @@ h1, h2, h3 {
     transition: 0.125s background-color ease-in-out;
 }
 
+
 .btn:hover {
     transition: 0.125s all ease-in-out;
     color: rgb(238, 227, 227);
@@ -35,11 +36,13 @@ h1, h2, h3 {
 }
 
 .btn.disabled {
-   pointer-events: none;
-   color: grey;
-   background-color: lightgrey;
-   border-color: lightgray;
+    pointer-events: none;
+    color: grey;
+    background-color: lightgrey;
+    border-color: lightgray;
 }
+
+
 
 .page-wrapper {
     max-width: 570px;
