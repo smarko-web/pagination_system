@@ -20,8 +20,7 @@ function paginatePosts($currentPage = 1, $recordsPerPage = 4)
 
     $posts = $stmt->fetchAll();
 
-    return 
-    [
+    return [
         'posts' => $posts,
         'prevPage' => $currentPage > 1 ? $currentPage - 1 : false,
         'nextPage' => $currentPage + 1 <= $numberOfPages ? $currentPage + 1 : false,
@@ -30,7 +29,12 @@ function paginatePosts($currentPage = 1, $recordsPerPage = 4)
 }
 
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-$pageData = paginatePosts($currentPage, 3);
+$pageData = paginatePosts($currentPage, 5);
 //$pageData = paginatePosts($currentPage); uses the default numberOfRecords defined on line 5 
 $pageNumbers = getPaginationNumbers($currentPage, $pageData['numberOfPages']);
 
+if (isset($_GET['page']) && isset($_GET['ajax'])) {
+    $posts = paginatePosts($_GET['page']);
+    echo json_encode($posts);
+    exit();
+}
